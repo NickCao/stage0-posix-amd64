@@ -41,23 +41,23 @@
 	-f ${M2MESOPLANET}/cc_macro.c \
 	-f ${M2MESOPLANET}/cc.c \
 	--debug \
-	-o ./artifact/M2-Mesoplanet-1.M1
+	-o ./M2-Mesoplanet-1.M1
 
-./artifact/blood-elf-0 ${ENDIAN_FLAG} ${BLOOD_FLAG} -f ./artifact/M2-Mesoplanet-1.M1 -o ./artifact/M2-Mesoplanet-1-footer.M1
+./artifact/blood-elf-0 ${ENDIAN_FLAG} ${BLOOD_FLAG} -f ./M2-Mesoplanet-1.M1 -o ./M2-Mesoplanet-1-footer.M1
 
 ./bin/M1 --architecture ${ARCH} \
 	${ENDIAN_FLAG} \
 	-f ${M2LIBC}/${ARCH}/${ARCH}_defs.M1 \
 	-f ${M2LIBC}/${ARCH}/libc-full.M1 \
-	-f ./artifact/M2-Mesoplanet-1.M1 \
-	-f ./artifact/M2-Mesoplanet-1-footer.M1 \
-	-o ./artifact/M2-Mesoplanet-1.hex2
+	-f ./M2-Mesoplanet-1.M1 \
+	-f ./M2-Mesoplanet-1-footer.M1 \
+	-o ./M2-Mesoplanet-1.hex2
 
 ./bin/hex2 --architecture ${ARCH} \
 	${ENDIAN_FLAG} \
 	--base-address ${BASE_ADDRESS} \
 	-f ${M2LIBC}/${ARCH}/ELF-${ARCH}-debug.hex2 \
-	-f ./artifact/M2-Mesoplanet-1.hex2 \
+	-f ./M2-Mesoplanet-1.hex2 \
 	-o ./bin/M2-Mesoplanet
 
 #################################################
@@ -75,22 +75,22 @@
 	-f ${MESCCTOOLS}/stringify.c \
 	-f ${MESCCTOOLS}/blood-elf.c \
 	--debug \
-	-o ./artifact/blood-elf-1.M1
+	-o ./blood-elf-1.M1
 
-./artifact/blood-elf-0 ${BLOOD_FLAG} ${ENDIAN_FLAG} -f ./artifact/blood-elf-1.M1 -o ./artifact/blood-elf-1-footer.M1
+./artifact/blood-elf-0 ${BLOOD_FLAG} ${ENDIAN_FLAG} -f ./blood-elf-1.M1 -o ./blood-elf-1-footer.M1
 ./bin/M1 --architecture ${ARCH} \
 	${ENDIAN_FLAG} \
 	-f ${M2LIBC}/${ARCH}/${ARCH}_defs.M1 \
 	-f ${M2LIBC}/${ARCH}/libc-full.M1 \
-	-f ./artifact/blood-elf-1.M1 \
-	-f ./artifact/blood-elf-1-footer.M1 \
-	-o ./artifact/blood-elf-1.hex2
+	-f ./blood-elf-1.M1 \
+	-f ./blood-elf-1-footer.M1 \
+	-o ./blood-elf-1.hex2
 
 ./bin/hex2 --architecture ${ARCH} \
 	${ENDIAN_FLAG} \
 	--base-address ${BASE_ADDRESS} \
 	-f ${M2LIBC}/${ARCH}/ELF-${ARCH}-debug.hex2 \
-	-f ./artifact/blood-elf-1.hex2 \
+	-f ./blood-elf-1.hex2 \
 	-o ./bin/blood-elf
 
 # Now we have our shipping debuggable blood-elf, the rest will be down hill from
@@ -111,23 +111,23 @@
 	-f ${M2LIBC}/bootstrappable.c \
 	-f ${MESCCTOOLS}/get_machine.c \
 	--debug \
-	-o artifact/get_machine.M1
+	-o ./get_machine.M1
 
-./bin/blood-elf ${BLOOD_FLAG} ${ENDIAN_FLAG} -f ./artifact/get_machine.M1 -o ./artifact/get_machine-footer.M1
+./bin/blood-elf ${BLOOD_FLAG} ${ENDIAN_FLAG} -f ./get_machine.M1 -o ./get_machine-footer.M1
 
 ./bin/M1 --architecture ${ARCH} \
 	${ENDIAN_FLAG} \
 	-f ${M2LIBC}/${ARCH}/${ARCH}_defs.M1 \
 	-f ${M2LIBC}/${ARCH}/libc-full.M1 \
-	-f ./artifact/get_machine.M1 \
-	-f ./artifact/get_machine-footer.M1 \
-	-o ./artifact/get_machine.hex2
+	-f ./get_machine.M1 \
+	-f ./get_machine-footer.M1 \
+	-o ./get_machine.hex2
 
 ./bin/hex2 --architecture ${ARCH} \
 	${ENDIAN_FLAG} \
 	--base-address ${BASE_ADDRESS} \
 	-f ${M2LIBC}/${ARCH}/ELF-${ARCH}-debug.hex2 \
-	-f ./artifact/get_machine.hex2 \
+	-f ./get_machine.hex2 \
 	-o ./bin/get_machine
 
 ############################################
@@ -151,21 +151,21 @@
 	-f ${M2PLANET}/cc_macro.c \
 	-f ${M2PLANET}/cc.c \
 	--debug \
-	-o ./artifact/M2-1.M1
+	-o ./M2-1.M1
 
-./bin/blood-elf ${ENDIAN_FLAG} ${BLOOD_FLAG} -f ./artifact/M2-1.M1 -o ./artifact/M2-1-footer.M1
+./bin/blood-elf ${ENDIAN_FLAG} ${BLOOD_FLAG} -f ./M2-1.M1 -o ./M2-1-footer.M1
 
 ./bin/M1 --architecture ${ARCH} \
 	${ENDIAN_FLAG} \
 	-f ${M2LIBC}/${ARCH}/${ARCH}_defs.M1 \
 	-f ${M2LIBC}/${ARCH}/libc-full.M1 \
-	-f ./artifact/M2-1.M1 \
-	-f ./artifact/M2-1-footer.M1 \
-	-o ./artifact/M2-1.hex2
+	-f ./M2-1.M1 \
+	-f ./M2-1-footer.M1 \
+	-o ./M2-1.hex2
 
 ./bin/hex2 --architecture ${ARCH} \
 	${ENDIAN_FLAG} \
 	--base-address ${BASE_ADDRESS} \
 	-f ${M2LIBC}/${ARCH}/ELF-${ARCH}-debug.hex2 \
-	-f ./artifact/M2-1.hex2 \
+	-f ./M2-1.hex2 \
 	-o ./bin/M2-Planet
